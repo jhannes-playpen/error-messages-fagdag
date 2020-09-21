@@ -8,6 +8,9 @@ const norwegian:ApplicationTexts = {
 const english:ApplicationTexts = {
     generalError: "Something went wrong"
 }
+function showError(language:ApplicationTexts, message:object) {
+    return "Problemer med å kontakte serveren";
+}
 
 describe("error messages", () => {
     it("shows error messages in norwegian", () => {
@@ -18,5 +21,8 @@ describe("error messages", () => {
     })
     it("shows error messages with code", () => {
         expect(showError(norwegian,{errorCode:"NetworkError"})).toEqual("Problemer med å kontakte serveren")
+    })
+    it("shows different error message", () => {
+        expect(showError(english,{errorCode:"PermissionDeniedError"})).toEqual("You are not permitted to perform this action")
     })
 })
